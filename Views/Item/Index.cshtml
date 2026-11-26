@@ -1,0 +1,62 @@
+@model IEnumerable<FindBack.Models.Item>
+
+@{
+    ViewData["Title"] = "All Items";
+}
+
+<div class="container mt-5">
+
+    <h2>Lost & Found Items</h2>
+
+    <p class="text-muted">Browse all reported items</p>
+
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+
+                            <h5>@item.Title</h5>
+
+                            <p>@item.Description</p>
+
+                            <p><strong>Category:</strong> @item.Category</p>
+
+                            <p><strong>Location:</strong> @item.Location</p>
+
+                            <p><strong>Date:</strong> @item.Date.ToShortDateString()</p>
+
+                            @if (item.Type == "Lost")
+                            {
+                                <span class="badge bg-danger">Lost</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Found</span>
+                            }
+
+                            @if (item.IsReturned)
+                            {
+                                <span class="badge bg-secondary">Returned</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Not Returned</span>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info">
+                No lost or found items available yet.
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "FindBack Home";
+}
+
+<div class="container mt-5 text-center">
+    <h1>Welcome to FindBack</h1>
+
+    <p>Lost something? Found something?</p>
+
+    <h3>Let's help reunite people with their belongings!</h3>
+
+    <a asp-controller="Item"
+       asp-action="Create"
+       class="btn btn-primary">
+        Report Lost Item
+    </a>
+
+    <a asp-controller="Item"
+       asp-action="Create"
+       class="btn btn-success">
+        Report Found Item
+    </a>
+
+    <a asp-controller="Item"
+       asp-action="Index"
+       class="btn btn-outline-dark">
+        View All Items
+    </a>
+</div>
