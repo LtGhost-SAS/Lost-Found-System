@@ -1,0 +1,30 @@
+@model FindBack.Models.Item
+
+@{
+    ViewData["Title"] = "Delete Item";
+}
+
+<div class="container mt-5">
+    <h2>Delete Item</h2>
+
+    <div class="alert alert-warning">
+        Are you sure you want to delete this item?
+    </div>
+
+    <h4>@Model.Title</h4>
+    <p>@Model.Description</p>
+    <p><strong>Category:</strong> @Model.Category</p>
+    <p><strong>Location:</strong> @Model.Location</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">
+            Yes, Delete
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+</div>

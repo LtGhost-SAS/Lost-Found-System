@@ -1,0 +1,146 @@
+
+@model FindBack.Models.Item
+
+@{
+    ViewData["Title"] = "Report Item";
+}
+
+<div class="container mt-5">
+
+    <h2>Report Lost / Found Item</h2>
+    <p class="text-muted">Provide item information below.</p>
+
+    <div class="card shadow-sm p-4">
+
+        <form asp-action="Create"
+              method="post"
+              enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">
+                    Item Name
+                </label>
+                <input asp-for="Title" class="form-control"
+                       placeholder="Enter item name" />
+                <span asp-validation-for="Title"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description"
+                       class="form-label"></label>
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="3"
+                          placeholder="Describe the item"></textarea>
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Category"
+                       class="form-label"></label>
+                <select asp-for="Category" class="form-select">
+                    <option value="">Select Category</option>
+                    <option>Electronics</option>
+                    <option>Documents</option>
+                    <option>Clothing</option>
+                    <option>Accessories</option>
+                    <option>Other</option>
+                </select>
+                <span asp-validation-for="Category"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Location"
+                       class="form-label"></label>
+                <input asp-for="Location"
+                       class="form-control"
+                       placeholder="Where was it lost/found?" />
+                <span asp-validation-for="Location"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Date"
+                       class="form-label"></label>
+                <input asp-for="Date"
+                       type="date"
+                       class="form-control" />
+                <span asp-validation-for="Date"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Type"
+                       class="form-label"></label>
+                <select asp-for="Type" class="form-select">
+                    <option value="">Select Type</option>
+                    <option value="Lost">Lost</option>
+                    <option value="Found">Found</option>
+                </select>
+                <span asp-validation-for="Type"
+                      class="text-danger"></span>
+            </div>
+
+            <hr />
+
+            <h5>Contact Information</h5>
+
+            <div class="mb-3">
+                <label asp-for="ContactName"
+                       class="form-label"></label>
+                <input asp-for="ContactName"
+                       class="form-control" />
+                <span asp-validation-for="ContactName"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ContactEmail"
+                       class="form-label"></label>
+                <input asp-for="ContactEmail"
+                       class="form-control" />
+                <span asp-validation-for="ContactEmail"
+                      class="text-danger"></span>
+            </div>
+
+            <hr />
+
+            <h5>Item Image</h5>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Upload Image (Optional)
+                </label>
+
+                <input type="file"
+                       name="imageFile"
+                       class="form-control"
+                       accept=".jpg,.jpeg,.png,.webp" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Submit Report
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

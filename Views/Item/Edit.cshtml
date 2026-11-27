@@ -1,0 +1,63 @@
+@model FindBack.Models.Item
+
+@{
+    ViewData["Title"] = "Edit Item";
+}
+
+<div class="container mt-5">
+    <h2>Edit Item</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label"></label>
+            <input asp-for="Category" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Location" class="form-label"></label>
+            <input asp-for="Location" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label"></label>
+            <input asp-for="Date" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Type" class="form-label"></label>
+            <select asp-for="Type" class="form-select">
+                <option value="Lost">Lost</option>
+                <option value="Found">Found</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ContactName" class="form-label"></label>
+            <input asp-for="ContactName" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ContactEmail" class="form-label"></label>
+            <input asp-for="ContactEmail" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Update Item
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
