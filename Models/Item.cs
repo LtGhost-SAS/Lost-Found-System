@@ -7,6 +7,8 @@ namespace FindBack.Models
     {
         public int Id { get; set; }
 
+        public string? UserId { get; set; }
+        
         [Required]
         [StringLength(100)]
         public string Title { get; set; }
